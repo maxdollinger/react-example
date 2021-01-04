@@ -1,6 +1,6 @@
-import { render } from '@testing-library/react';
 import React, { useState } from 'react';
-import { MenuItem } from '../menu-item/menu-item';
+import { withRouter } from 'react-router-dom';
+import MenuItem from '../menu-item/menu-item';
 
 import './directory.styles.scss'
 
@@ -43,8 +43,8 @@ export const Directory = () => {
      return (
      <div className="directory-menu">
           {
-               section.map( ({title, imageUrl, size, id}) => (
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size}></MenuItem>
+               section.map( ({id, ...otherProps}) => (
+                    <MenuItem key={id} {...otherProps}></MenuItem>
                ))
           }
      </div>);
