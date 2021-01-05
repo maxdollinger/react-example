@@ -1,0 +1,40 @@
+.header {
+  height: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 25px;
+
+  .logo-container {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    color: gray;
+  }
+
+  .logo {
+    float: left;
+    margin-right: 5%;
+    transform: scale(1.4);
+  }
+
+  .heading {
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 2.3rem;
+    width: 350px;
+    margin-top: auto;
+  }
+
+  .options {
+    width: 75%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 1.4rem;
+
+    .option {
+      margin-left: 15px;
+    }
+  }
+}
