@@ -15,14 +15,12 @@ export const SignIn = () => {
 
     try {
       await auth.signInWithEmailAndPassword(email, password);
-      setEmail('');
-      setPassword('')
-      history.push('/shop');
-      
-    } catch(err) {
-      alert(err.message)
+      setEmail("");
+      setPassword("");
+      history.push("/shop");
+    } catch (err) {
+      alert(err.message);
     }
-    console.log(email, password);
   };
 
   const handleChange = (event) => {
@@ -33,8 +31,8 @@ export const SignIn = () => {
 
   const googleSignIn = async () => {
     await signInWithGoole();
-    history.push('/shop');
-  }
+    history.push("/shop");
+  };
 
   return (
     <div className="sing-in">
@@ -61,14 +59,14 @@ export const SignIn = () => {
           required
         />
         <div className="buttons">
-        <CustomButton onClick={handleSubmit} children="Sign in" />
-        <CustomButton
-          onClick={googleSignIn}
-          google={true}
-          children="Sign in with Google"
-        />
+          <CustomButton onClick={handleSubmit} children="Sign in" />
+          <CustomButton
+            onClick={googleSignIn}
+            google={true}
+            children="Sign in with Google"
+          />
         </div>
       </form>
     </div>
   );
-}
+};
