@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import { Route, Switch } from "react-router-dom";
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 
 import { HomePage } from './pages/homepage/homepage';
 import { SignInPage } from "./pages/signin/signin-page";
@@ -12,21 +14,36 @@ import './App.css';
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
-  useEffect( () => {
-    const unsuscribeFromAuth = auth.onAuthStateChanged( user => {
-      setCurrentUser(user);
-      console.log(user);
+  useEffect(() => {
+    let unsubSnpSht;
+    const unsubAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDoc(userAuth);
+
+        unsubSnpSht = userRef.onSnapshot(snapShot => {
+          setCurrentUser(
+            {
+              id: snapShot.id,
+              ...snapShot.data()
+            });
+        });
+      }
+
+      setCurrentUser(userAuth);
     });
 
+
     return () => {
-      unsuscribeFromAuth();
-      console.log('loged out');
-    }
-  });
+      console.log('cleanup');
+      unsubAuth();
+      unsubSnpSht();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <div className="App">
-      <Header currentUser={currentUser}/>
+      <Header currentUser={currentUser} />
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/shop' component={ShopPage} />

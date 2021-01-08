@@ -1,17 +1,27 @@
 import React, { useState } from "react";
 import "./signin.styles.scss";
-
 import { FormInput } from "../../components/form-input/form-input";
 import { CustomButton } from "../../components/custom-button/custom-button";
-import { signInWithGoole } from "../../firebase/firebase.utils";
+import { auth, signInWithGoole } from "../../firebase/firebase.utils";
+import { useHistory } from "react-router-dom";
 
 export const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  let history = useHistory();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
+    try {
+      await auth.signInWithEmailAndPassword(email, password);
+      setEmail('');
+      setPassword('')
+      history.push('/shop');
+      
+    } catch(err) {
+      alert(err.message)
+    }
     console.log(email, password);
   };
 
@@ -20,6 +30,11 @@ export const SignIn = () => {
     if (name === "email") setEmail(value);
     if (name === "password") setPassword(value);
   };
+
+  const googleSignIn = async () => {
+    await signInWithGoole();
+    history.push('/shop');
+  }
 
   return (
     <div className="sing-in">
@@ -46,9 +61,9 @@ export const SignIn = () => {
           required
         />
         <div className="buttons">
-        <CustomButton type="submit" children="Sign in" />
+        <CustomButton onClick={handleSubmit} children="Sign in" />
         <CustomButton
-          onClick={signInWithGoole}
+          onClick={googleSignIn}
           google={true}
           children="Sign in with Google"
         />
@@ -56,4 +71,4 @@ export const SignIn = () => {
       </form>
     </div>
   );
-};
+}

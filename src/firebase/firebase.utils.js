@@ -1,7 +1,6 @@
 import firebase from 'firebase/app';
-
-import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/firestore';
 
 const config = {
      apiKey: "AIzaSyAMoKalsNr6NSS2KVjJgH8lUpUuEcBTbz4",
@@ -21,5 +20,28 @@ const provider = new firebase.auth.GoogleAuthProvider();
 provider.setCustomParameters({
      prompt: 'select_account'
 });
-
 export const signInWithGoole = () => auth.signInWithPopup(provider);
+
+export const createUserProfileDoc = async (userAuth, additionalData) => {
+     if(!userAuth) return;
+
+     const userRef = firestore.collection('users').doc(userAuth.uid);
+     let snapShot = await userRef.get();
+
+     if (!snapShot.exists) {
+          const { displayName, email } = userAuth;
+          const createdAt = new Date();
+          try {
+            await userRef.set({
+              displayName,
+              email,
+              createdAt,
+              ...additionalData
+            });
+          } catch (error) {
+            console.log('error creating user', error.message);
+          }
+        }
+      
+        return userRef;
+}
