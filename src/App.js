@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import { connect } from "react-redux";
-import { setCurrentUser }from './redux/user/user.actions';
+import { setCurrentUser } from './redux/user/user.actions';
 
 import { HomePage } from './pages/homepage/homepage';
 import { SignInPage } from "./pages/signin/signin-page";
@@ -11,7 +11,7 @@ import Header from './components/header/header';
 
 import './App.css';
 
-function App({ setCurrentUser }) {
+function App({ setCurrentUser, currentUser }) {
 
   useEffect(() => {
     let unsubSnpSht;
@@ -46,15 +46,18 @@ function App({ setCurrentUser }) {
       <Switch>
         <Route exact path='/' component={HomePage} />
         <Route exact path='/shop' component={ShopPage} />
-        <Route exact path='/sign-in' component={SignInPage} />
+        <Route exact path='/sign-in' render={() => currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
       </Switch>
     </div>
   );
 }
 
+const mapStateToProps = state => ({
+  currentUser: state.user.currentUser,
+})
 
 const mapDispatchToProps = dispach => ({
   setCurrentUser: user => dispach(setCurrentUser(user))
 })
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
