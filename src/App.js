@@ -4,8 +4,8 @@ import { auth, createUserProfileDoc } from './firebase/firebase.utils';
 import { connect } from "react-redux";
 import { setCurrentUser } from './redux/user/user.actions';
 
-import { HomePage } from './pages/homepage/homepage';
-import { SignInPage } from "./pages/signin/signin-page";
+import HomePage from './pages/homepage/homepage';
+import SignInPage from "./pages/signin/signin-page";
 import ShopPage from './pages/shop/shop';
 import Header from './components/header/header';
 

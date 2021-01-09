@@ -3,7 +3,7 @@ import MenuItem from '../menu-item/menu-item';
 
 import './directory.styles.scss'
 
-export const Directory = () => {
+const Directory = () => {
      const [section] = useState([
           {
                title: 'hats',
@@ -48,3 +48,5 @@ export const Directory = () => {
           }
      </div>);
 }
+
+export default Directory;

@@ -4,9 +4,12 @@ import { Link, useHistory } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { connect } from 'react-redux';
 
+import CartIcon from '../cart-icon/cart-icon.jsx';
+import CartDropdown from '../cart-dropdown/cart-dropdown';
+
 import "./header.styles.scss";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartHidden }) => {
   let history = useHistory();
 
   const signOut = () => {
@@ -38,13 +41,20 @@ const Header = ({ currentUser }) => {
             Sign-in
           </Link>
         )}
+        <CartIcon />
       </div>
+      {
+        cartHidden ? null : (
+          <CartDropdown />
+        )
+      }
     </div>
   )
 } ;
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser,
+const mapStateToProps = ({user: {currentUser}, cart: {hidden}}) => ({
+  currentUser,
+  cartHidden: hidden
 })
 
 export default connect(mapStateToProps)(Header);

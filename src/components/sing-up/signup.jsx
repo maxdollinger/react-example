@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-import { FormInput } from "../form-input/form-input";
-import { CustomButton } from "../custom-button/custom-button";
+import FormInput from "../form-input/form-input";
+import CustomButton from "../custom-button/custom-button";
 
 import { auth, createUserProfileDoc } from "../../firebase/firebase.utils";
 
 import "./signup.styles.scss";
 
-export const SignUp = () => {
+const SignUp = () => {
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -91,4 +91,6 @@ export const SignUp = () => {
       </form>
     </div>
   );
-};
+}
+
+export default SignUp;

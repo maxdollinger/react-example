@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import "./signin.styles.scss";
-import { FormInput } from "../../components/form-input/form-input";
-import { CustomButton } from "../../components/custom-button/custom-button";
+import FormInput from "../../components/form-input/form-input";
+import CustomButton from "../../components/custom-button/custom-button";
 import { auth, signInWithGoole } from "../../firebase/firebase.utils";
 import { useHistory } from "react-router-dom";
 
-export const SignIn = () => {
+const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   let history = useHistory();
@@ -69,4 +69,6 @@ export const SignIn = () => {
       </form>
     </div>
   );
-};
+}
+
+export default SignIn;
