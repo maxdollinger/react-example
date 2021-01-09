@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PreviewCollection from "../../components/prieview-collection/prieview-collection";
-import shopData from "../../SHOPING_DATA";
+import shopData from "../../shop.data";
 
 const ShopPage = (props) => {
   const [collections] = useState(shopData);

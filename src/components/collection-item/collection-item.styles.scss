@@ -4,11 +4,26 @@
   flex-direction: column;
 
   .image {
+    display: flex;
     width: 90%;
     height: 250px;
     margin-bottom: 15px;
     background-size: cover;
     background-position: center;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .custom-button {
+    width: 50px;
+    height: 50px;
+    display: none;
   }
 
   .collection-footer {
@@ -25,4 +40,17 @@
       justify-content: end;
     }
   }
+
+  &:hover {
+    .image {
+      opacity: 0.8;
+      box-shadow: 0 0 10px #333333;
+    }
+
+    .custom-button {
+      opacity: 0.8;
+      display: flex;
+    }
+      
+ }
 }

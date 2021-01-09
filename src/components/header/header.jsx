@@ -9,7 +9,7 @@ import CartDropdown from '../cart-dropdown/cart-dropdown';
 
 import "./header.styles.scss";
 
-const Header = ({ currentUser, cartHidden }) => {
+const Header = ({ currentUser, cartHidden}) => {
   let history = useHistory();
 
   const signOut = () => {
