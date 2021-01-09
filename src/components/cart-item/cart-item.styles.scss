@@ -4,9 +4,19 @@
      height: 80px;
      margin-bottom: 10px;
      font-size: 14px;
-   
-     img {
+
+     .img {
+       background-position: center;
+       background-size: contain;
+       background-repeat: no-repeat;
+
+       display: flex;
+       flex-direction: column;
+       justify-items: baseline;
+       justify-content: space-between;
+
        width: 30%;
+       height: 100%;
      }
    
      .item-details {
@@ -15,10 +25,9 @@
        flex-direction: column;
        align-items: flex-start;
        justify-content: center;
-       padding: 10px 20px;
+       padding: 5px 10px;
    
        .name {
-         
          font-weight: bold;
          text-decoration: underline;
        }

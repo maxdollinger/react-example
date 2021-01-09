@@ -5,7 +5,7 @@ const INITIAL_STATE = {
      hidden: true,
      cartItems: [],
      total: 0,
-     numberItems: 0
+     itemsCount: 0
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -22,7 +22,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                     ...state,
                     cartItems,
                     total: (state.total+action.payload.price),
-                    numberItems: (++state.numberItems)
+                    itemsCount: (++state.itemsCount)
                }
           default:
                return state;
