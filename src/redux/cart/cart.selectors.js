@@ -13,3 +13,7 @@ export const selectCartItemsCount = createSelector(
 export const selectCartToal = createSelector(
      [selectCart], cart => cart.total
 )
+
+export const selectCartHidden = createSelector(
+     [selectCart], cart => cart.hidden
+)
