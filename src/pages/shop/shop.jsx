@@ -1,17 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
+import { connect } from 'react-redux';
+
+import { selectShopData } from '../../redux/shop/shop.selectors';
+
 import PreviewCollection from "../../components/prieview-collection/prieview-collection";
-import shopData from "../../shop.data";
 
-const ShopPage = (props) => {
-  const [collections] = useState(shopData);
-
-  return (
+const ShopPage = ({ collections }) => {
+  return(
     <div className="shop-page">
       {collections.map(({ id, ...otherProps }) => (
         <PreviewCollection key={id} {...otherProps}></PreviewCollection>
       ))}
     </div>
-  );
-};
+  )};
 
-export default ShopPage;
+const mapStateToProps = state => ({
+  collections: selectShopData(state)
+})
+
+export default connect(mapStateToProps)(ShopPage);
