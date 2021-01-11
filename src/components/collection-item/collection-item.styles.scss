@@ -1,5 +1,5 @@
 .collection-item {
-  width: 25%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 
@@ -7,6 +7,8 @@
     display: flex;
     width: 90%;
     height: 250px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 15px;
     background-size: cover;
     background-position: center;
@@ -29,7 +31,7 @@
   .collection-footer {
     width: 90%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 18px;
 
     .name {
@@ -41,7 +43,7 @@
     }
   }
 
-  &:hover {
+  .collection-page &:hover {
     .image {
       opacity: 0.8;
       box-shadow: 0 0 10px #333333;
