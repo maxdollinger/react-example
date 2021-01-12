@@ -1,5 +1,8 @@
 .sign-in-and-sign-up {
-     width: 850px;
+     width: 100%;
      display: flex;
-     justify-content: space-between;
+     grid-auto-flow:row;
+     grid-gap: 10px;
+     grid-template-columns: 1fr 1fr;
+     justify-content: space-around;
    }

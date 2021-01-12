@@ -27,7 +27,7 @@ const Header = ({ currentUser, cartHidden}) => {
           <Logo />
         </div>
         <div className="heading">
-          <span className="line">Crown Clothing</span>
+          <span className="line">Crwn-Clothing</span>
         </div>
       </Link>
       <div className="options">
