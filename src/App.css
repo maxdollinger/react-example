@@ -11,6 +11,12 @@ a {
      color: black;
 }
 
+.showcase {
+     color: red;
+     text-align: center;
+     font-size: 3rem;
+}
+
 * {
      box-sizing: border-box;
 }

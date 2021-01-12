@@ -53,6 +53,9 @@ function App({ setCurrentUser, currentUser }) {
         <Route exact path='/checkout' component={CheckoutPage} />
         <Route exact path='/sign-in' render={() => currentUser ? (<Redirect to='/' />) : (<SignInPage />)} />
       </Switch>
+      <div>
+        <h1 className="showcase">&#129154; Showcase page not a real shop &#129152;</h1>
+      </div>
     </div>
   );
 }
