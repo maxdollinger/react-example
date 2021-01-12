@@ -48,6 +48,7 @@ function App({ setCurrentUser, currentUser }) {
     <div className="App">
       <div>
         <h1 className="showcase">&#129154; Showcase page not a real shop &#129152;</h1>
+        <hr />
       </div>
       <Header />
       <Switch>
